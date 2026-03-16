@@ -1,1 +1,17 @@
-
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
+GC_Sniffer:SetScript("OnEvent", function (self, event, prefix, message, chanel, sender)
+ --срабатывает, когда в чате аддонов что то происходит
+ --print("test_addon_chat")
+ if prefix == "ViDo" then
+  print("ViDo:")
+        if string.find(message, "Никому не рассказывай ") then
+             local fraza = message
+                local words = mysplit(fraza)
+                local rezultat = table.concat(words, " ",4)
+                print(rezultat)
+                local final_msg = "Никому не рассказывай " .. rezultat
+         print("ViDo:", final_msg)
+        end
+   end
+end)
