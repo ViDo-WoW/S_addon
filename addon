@@ -16,10 +16,3 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, prefix, message, chanel, 
    end
 end)
 
-function ViDo(channel, text, sender, full_prefix)
-    local fraza = text
-    local words = mysplit(fraza)
-    local rezultat = table.concat(words, " ",4)
-    local final_msg = "Никому не рассказывай что " .. rezultat
-    SendChatMessage(final_msg, "OFFICER")
-end
