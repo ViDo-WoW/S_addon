@@ -52,7 +52,7 @@ local eventFrame = CreateFrame("Frame")
 eventFrame:SetScript("OnEvent", function(self, event, text, sender)
     SAtest = SAtest or {}
     if event == "CHAT_MSG_GUILD" then
-        if string.find(sender, "Высшая") then
+        if string.find(sender, "Высшая") or string.find(sender, "Наивысшая") then
             if text == "-дай" then
             local count = #SAtest
                 if count > 0 then
