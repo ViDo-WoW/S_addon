@@ -2,9 +2,10 @@ function searchSystl(channel, text, count)
     local ans = {}
     for i = #SAtest, 1, -1 do
         local a = SAtest[i]
-        if string.find(count) or string.find(text) then
+        if string.find(#count) or string.find(text) then
             table.insert(ans, a.text)
             if count and #ans >= count then break end
         end
     end
+    return ans
 end
