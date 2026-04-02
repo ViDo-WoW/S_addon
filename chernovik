@@ -1,7 +1,12 @@
 function searchSystl(channel, text, count)
-    local ans = {}
-    if type(count) == "number" then
-        for i = #SAtest, 1, -1 do
+    if not SAtest then return {} end
+    local res = {}
+    for i = #SAtest, 1, -1 do
+        local e = SAtest[i]
+        if (not channel or e.channel == channel) and (not text or string.find(e.text, text, 1, true)) then
+            table.insert(res, e.text)
+            if count and #res >= count then break end
         end
     end
-end)
+    return res
+end
