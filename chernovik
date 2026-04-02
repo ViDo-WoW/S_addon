@@ -1,0 +1,7 @@
+function searchSystl(channel, text, count)
+    local ans = {}
+    if type(count) == "number" then
+        for i = #SAtest, 1, -1 do
+        end
+    end
+end)
