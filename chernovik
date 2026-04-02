@@ -1,13 +1,10 @@
 function searchSystl(channel, text, count)
-    if not SAtest then return {} end
     local ans = {}
     for i = #SAtest, 1, -1 do
         local a = SAtest[i]
-        if (not channel or a.channel == channel) and (not text or string.find(a.text, text, 1, true)) then
-            table.insert(res, a.text)
+        if string.find(count) or string.find(text) then
+            table.insert(ans, a.text)
             if count and #ans >= count then break end
         end
     end
-    return ans
 end
-
