@@ -9,3 +9,17 @@ function searchSystl(text, count)
     end
     return ans
 end
+
+
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+    if event == "CHAT_MSG_GUILD" then
+        if string.find(sender, "Высшая") or string.find(sender, "Наивысшая") or string.find(sender, "Lovery") then
+            local rez = searchSystl
+        if message == "-дай" then
+                print(rez)
+            end
+        end
+    end
+end)
