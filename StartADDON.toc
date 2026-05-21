@@ -1,0 +1,14 @@
+## interface: 30300
+## Title: StartADDON
+## Notes: StartADDON
+## Author: Vladgobelen
+## Version: 0.0.0
+## X-Date: 2023-07-15
+## SavedVariables: SAtest
+##SavedVariablesPerCharacter: SAtestPers
+libs\UTF8\utf8.lua
+functions.lua
+guild_chat.lua
+addon_chat.lua
+officer_chat.lua
+system_chat.lua
