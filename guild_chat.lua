@@ -3,11 +3,11 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
     --Срабатывает, когда что то происходит в гильдейском чате
      -- Проверка отправителя
-        if string.find(sender, "Шеф") then
+    if Hefe(sender) then
             print("Креветка по имени " .. sender)
             print("Нашкрябал " .. message)
-        end
-         if string.find(sender, "Шеф") or string.find(sender, "Lovery") then
+    end
+    if Hefe(sender) then
          if string.find(message, "чо") then
             SendChatMessage("Это креветка по имени " .. sender, "GUILD")
         end
@@ -45,7 +45,7 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
         local words = mysplit(fraza)
         local rezultat = table.concat(words, " ",2)
             print(rezultat)
-        local final_msg = "Никому не рассказывай " .. rezultat
+        local final_msg = "Никому не рассказывай что " .. rezultat
         SendAddonMessage("ViDo", final_msg, "GUILD")
     end
 end)
