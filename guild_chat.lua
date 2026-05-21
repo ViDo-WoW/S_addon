@@ -4,8 +4,8 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
     --Срабатывает, когда что то происходит в гильдейском чате
      -- Проверка отправителя
     if Hefe(sender) then
-            print("Креветка по имени " .. sender)
-            print("Нашкрябал " .. message)
+            --print("Креветка по имени " .. sender)
+            --print("Нашкрябал " .. message)
     end
     if Hefe(sender) then
          if string.find(message, "чо") then
