@@ -109,9 +109,6 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
             SendChatMessage("Ответ принят от " .. sender, "OFFICER")
         end
     end
-end)
-    local eventFrame = CreateFrame("Frame")
-    eventFrame:SetScript("OnEvent", function(self, event, message, sender)
     if string.find(sender, "Высшая") or string.find(sender, "Наивысшая") or string.find(sender, "Endur") then
         if message == "!результат" then
         local count = #HighestGame
@@ -152,7 +149,6 @@ eventFrame:SetScript("OnEvent", function(self, event, text, sender)
             end
         end
     end
-
 end)
 eventFrame:RegisterEvent("CHAT_MSG_SYSTEM")
 eventFrame:RegisterEvent("CHAT_MSG_GUILD")
