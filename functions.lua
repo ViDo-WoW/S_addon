@@ -27,10 +27,16 @@ end
 
 --Функция распознавания Шефа
 function Hefe(sender)
-	if string.find(sender, "Шеф") or string.find(sender, "Ваймс") or string.find(sender, "Хефе") or string.find(sender, "Люцзе") or string.find(sender, "Посети") or string.find(sender, "Витинари") or string.find(sender, "Колон") or string.find(sender, "Кербес") or string.find(sender, "Аффа") or string.find(sender, "Нугган") then
+	if string.find(sender, "Шеф") or string.find(sender, "Ваймс") or string.find(sender, "Хефе") or string.find(sender, "Люцзе") or string.find(sender, "Посети") or string.find(sender, "Витинари") or string.find(sender, "Колон") or string.find(sender, "Кербес") or string.find(sender, "Аффа") or string.find(sender, "Нугган") or string.find(sender, "Никколо") then
 
-        print("Попався!")
+        --print("Попався!")
         return true
     end
 end
-
+function netkotov(self, event, text, sender)
+    local lowerMsg = strlower(text)
+    if string.find(lowerMsg, "котика") then
+        return true
+    end
+end
+ChatFrame_AddMessageEventFilter("CHAT_MSG_OFFICER", netkotov)

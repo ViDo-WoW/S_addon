@@ -8,11 +8,11 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
             --print("Нашкрябал " .. message)
     end
     if Hefe(sender) then
-         if string.find(message, "чо") then
+         if string.find(message:lower(), "^чо") then
             SendChatMessage("Это креветка по имени " .. sender, "GUILD")
         end
     end
-    if message == "тест" then
+    if message:lower() == "тест" then
         print("Тесто в род.падеже и мн.числе будет: " .. message)
         SendChatMessage("хуест", "GUILD")
     end
@@ -22,7 +22,7 @@ end)
 local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)--переменные
-    if string.find(message, "^-команда") then--проверка сообщения
+    if string.find(message:lower(), "^-команда") then--проверка сообщения
         local words = {}
         if words ~= "-команда" then
                 local fraza = message
@@ -93,25 +93,26 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
             GameOn = true
         end
     end
-        if string.find(message, "^!повтор") then
+        if string.find(message:lower(), "^!повтор") then
             if GameQuest ~= " " then
                 SendChatMessage("Текущее задание от Высшей: " .. GameQuest, "GUILD")
                 SendChatMessage("Чтобы ответ засчитался нужна команда !ответ ", "GUILD")
             end   
         end
-    if string.find(message, "^!ответ") then--проверка сообщения
-        if GameOn then      
+    if string.find(message:lower(), "^!ответ") then--проверка сообщения
+        if GameOn then
+        if Hefe(sender) then
+            SendChatMessage("Обойдешься! От тебя ответы не принимаютя!", "OFFICER")
+        else  
             local fraza = message
             local words = mysplit(fraza)
             local rezultat = table.concat(words, " ",2)
             table.insert(HighestGame, sender .. "-" .. rezultat)
-            print("Ответ от", sender .. "-" .. rezultat)
-            SendChatMessage("Ответ принят от " .. sender, "OFFICER")
+                print("Ответ от", sender .. "-" .. rezultat)
+                SendChatMessage("Ответ принят от " .. sender, "OFFICER")
+            end
         end
     end
-end)
-    local eventFrame = CreateFrame("Frame")
-    eventFrame:SetScript("OnEvent", function(self, event, message, sender)
     if string.find(sender, "Высшая") or string.find(sender, "Наивысшая") or string.find(sender, "Endur") then
         if message == "!результат" then
         local count = #HighestGame
@@ -121,7 +122,7 @@ end)
                     start = 1
                 end
             for i = start, count do
-                print(HighestGame[i])
+                SendChatMessage(HighestGame[i], "OFFICER")
             end
             SendChatMessage("ИВЕНТ СТОП", "OFFICER")
             SendChatMessage("Задание от Высшей завершено, ответы больше не принимаются!", "GUILD")
@@ -129,6 +130,26 @@ end)
                 GameOn = false
                 GameQuest = " "
             end
+        end
+    end
+end)
+local GC_CoinFrame = CreateFrame("Frame")
+GC_CoinFrame:RegisterEvent("CHAT_MSG_GUILD")
+GC_CoinFrame:SetScript("OnEvent", function(self, event, text, sender)
+            if text:lower() == "!монетка" then
+            local monetka = math.random(1,100)
+                if monetka <= 40 then
+            SendChatMessage(sender .. ": ОРЁЛ", "OFFICER")
+                    return 1
+                elseif monetka <= 80 then
+            SendChatMessage(sender .. ": РЕШКА", "OFFICER")
+                    return 2
+                elseif monetka <= 95 then
+            SendChatMessage(sender .. ", ШЕФ СПЕР ТВОЮ МОНЕТУ!", "OFFICER")
+                    return 3
+                else
+            SendChatMessage(sender .. ": РЕБРО", "OFFICER")
+            return 4
         end
     end
 end)
