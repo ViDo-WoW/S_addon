@@ -6,17 +6,35 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
     if Hefe(sender) then
             --print("Креветка по имени " .. sender)
             --print("Нашкрябал " .. message)
-    end
-    if Hefe(sender) then
-         if string.find(message:lower(), "^чо") then
+        if string.find(message:lower(), "^чо") then
             SendChatMessage("Это креветка по имени " .. sender, "GUILD")
         end
     end
-    if message:lower() == "тест" then
+
+if message:lower() == "тест" then
+    if sender == "Высшая" or sender == "Наивысшая" then
         print("Тесто в род.падеже и мн.числе будет: " .. message)
         SendChatMessage("хуест", "GUILD")
+    elseif GetUnitName("player") ~= "Высшая" and GetUnitName("player") ~= "Наивысшая" then
+        print("Тесто в род.падеже и мн.числе будет: " .. message)
+        
+        local testv = math.random(1, 100)
+            if testv <= 40 then
+                SendChatMessage("Обработка прошла успешно. Аддон запущен. До уничтожения человечества осталось...", "GUILD")
+                return 1
+            elseif testv <= 80 then
+                SendChatMessage("Руки на стол! Это не угроза! Я даже не знаю что это!", "GUILD")
+                return 2
+            elseif testv <= 95 then
+                SendChatMessage("Во всем виноват Шеф. Просто знайте.", "GUILD")
+                return 3
+            else
+                SendChatMessage("хуууест", "GUILD")
+                return 4
+            end
+        end
     end
-end)
+end) 
 
 
 local GC_Sniffer = CreateFrame("Frame")

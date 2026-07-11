@@ -9,12 +9,16 @@ function mysplit (inputstr, sep)
 	end
 	return t
 end
+
+
 --проверка длины таблицы
 function tablelength(T)
 	local count = 0
 	for _ in pairs(T) do count = count + 1 end
 	return count
 end
+
+
 --пример функции для скрывания фреймов группы
 function partyFrameHide()
 	for i = 1, 25 do
@@ -25,6 +29,7 @@ function partyFrameHide()
 	end
 end
 
+
 --Функция распознавания Шефа
 function Hefe(sender)
 	if string.find(sender, "Шеф") or string.find(sender, "Ваймс") or string.find(sender, "Хефе") or string.find(sender, "Люцзе") or string.find(sender, "Посети") or string.find(sender, "Витинари") or string.find(sender, "Колон") or string.find(sender, "Кербес") or string.find(sender, "Аффа") or string.find(sender, "Нугган") or string.find(sender, "Никколо") then
@@ -33,6 +38,9 @@ function Hefe(sender)
         return true
     end
 end
+
+
+--Функция отключения котиков
 function netkotov(self, event, text, sender)
     local lowerMsg = strlower(text)
     if string.find(lowerMsg, "котика") then
