@@ -65,13 +65,13 @@ end
 
 
 --Функция отключения котиков
-function netkotov(self, event, text, sender)
+--[[function netkotov(self, event, text, sender)
     local lowerMsg = strlower(text)
     if string.find(lowerMsg, "котика") then
         return true
     end
 end
-ChatFrame_AddMessageEventFilter("CHAT_MSG_OFFICER", netkotov)
+ChatFrame_AddMessageEventFilter("CHAT_MSG_OFFICER", netkotov)--]]
 
 --функция поиска по системному чату
 function searchSystl(text, count)

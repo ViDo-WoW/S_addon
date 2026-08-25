@@ -202,3 +202,30 @@ GC_CoinFrame:SetScript("OnEvent", function(self, event, text, sender)
         end
     end
 end)
+
+
+--команда на повышение 80 И.О.
+local eventFrame = CreateFrame("Frame")
+eventFrame:RegisterEvent("CHAT_MSG_GUILD")
+eventFrame:RegisterEvent("CHAT_MSG_OFFICER")
+eventFrame:SetScript("OnEvent", function(self, event, message, sender)
+    if string.find(sender, "Высшая") or string.find(sender, "Наивысшая") or string.find(sender, "Сэкса") then
+        if message == "!апио" then
+            print("команда найдена")    
+            local allGuild = GetNumGuildMembers()
+            local ioUp = 0
+            for i = 1, allGuild do 
+                local name, rank, _, level = GetGuildRosterInfo(i)
+                if ioUp >= 10 then
+                    break
+                end
+                if string.lower(rank) == "и.о. констебля" and level == 80 then
+                    print("нашли ИО 80") 
+                    GuildPromote(name)
+                    ioUp = ioUp + 1
+                    print(name, " повышен!")
+                end
+            end
+        end
+    end
+end)
