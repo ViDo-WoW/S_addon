@@ -69,14 +69,16 @@ local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
-    if string.find(message, "-сбщ") then
+    if string.find(message, "^-сбщ") then
         local words = {}
-        local fraza = message
-        local words = mysplit(fraza)
-        local rezultat = table.concat(words, " ",2)
-        print(rezultat)
-        local final_msg = "Никому не рассказывай что " .. rezultat
-        SendAddonMessage("ViDo", final_msg, "GUILD")
+        if words ~= "-сбщ" then
+            local fraza = message
+            local words = mysplit(fraza)
+            local rezultat = table.concat(words, " ",2)
+            print(rezultat)
+            local final_msg = "Никому не рассказывай что " .. rezultat
+            SendAddonMessage("ViDo", final_msg, "GUILD")
+        end
     end
 end)
 
@@ -227,5 +229,63 @@ eventFrame:SetScript("OnEvent", function(self, event, message, sender)
                 end
             end
         end
+    end
+end)
+
+
+--гайды
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+    if string.find(message:lower(), "^-гайд вар") then
+        print("есть такой гайд")
+        SendChatMessage('Фуривар: ССЫЛКА', "GUILD")
+        SendChatMessage('Протовар: ССЫЛКА', "GUILD")
+    end   
+    if string.find(message:lower(), "^-гайд хант") then
+        print("нет гайда")
+        SendChatMessage('ММ, БМ: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд лок") then
+        print("нет гайда")
+        SendChatMessage('Демон, Афлик: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд маг") then
+        print("нет гайда")
+        SendChatMessage('Фаер: https://forum.wowcircle.com/showthread.php?t=174005', "GUILD")
+        SendChatMessage('Аркан: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд прист") then
+        print("нет гайда")
+        SendChatMessage('ШП, ДЦ, Хприст: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд пал") then
+        print("нет гайда")
+        SendChatMessage('Х,П,Р: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд дк") then
+        print("нет гайда")
+        SendChatMessage('А,Г,Ф,Бд: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд дру") then
+        print("нет гайда")
+        SendChatMessage('С,К,Р,М: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд шам") then
+        print("нет гайда")
+        SendChatMessage('Э4,Эл,Р: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
+    end
+    if string.find(message:lower(), "^-гайд рога") then
+        print("нет гайда")
+        SendChatMessage('Мути, Комбат: Такого гайда пока что нет, но если кто-то из вас знает отличный гайд на этот спек - присылайте ссылку Высшей', "GUILD")
+        SendChatMessage('Будем заполнять эту базу знаний вместе!', "GUILD")
     end
 end)
