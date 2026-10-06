@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: ViDo
+## Notes: Аддон по всякому разному, тестовый.
+## Author: Высшая
+## Version: 1.0
+## X-Date: 2026-09-18
+## SavedVariables: SAtest
+libs\UTF8\utf8.lua
+firstable.lua
+functions.lua
+system_chat.lua
+guild_chat.lua
+addon_chat.lua
+officer_chat.lua
