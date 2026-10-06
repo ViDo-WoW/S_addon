@@ -9,8 +9,8 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
             print("Тесто в род.падеже и мн.числе будет: " .. message)
             SendChatMessage("хуест", "GUILD")
 
-            elseif GetUnitName("player") ~= "Высшая"
-            and GetUnitName("player") ~= "Наивысшая" then --почему не сендер?
+            elseif if sender ~= "Высшая"
+            and sender ~= "Наивысшая" then
                 print("Тесто в род.падеже и мн.числе будет: " .. message)
                 local testv = math.random(1, 100)
             if testv <= 40 then
